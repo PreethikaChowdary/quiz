@@ -1,19 +1,18 @@
-# Use Playwright image which already contains browsers and system deps
-FROM mcr.microsoft.com/playwright:v1.44.0-jammy
+FROM mcr.microsoft.com/playwright:focal
 
 WORKDIR /app
 
-# Copy package files first (layering)
-COPY package.json package-lock.json* ./
+# Copy package.json only
+COPY package.json ./
 
-# Install dependencies (playwright browsers are present in base image but install step ensures npm deps)
-RUN npm ci --no-audit --no-fund
+# Install dependencies
+RUN npm install --no-audit --no-fund
 
-# Copy rest of project
+# Copy all files
 COPY . .
 
-# Expose port (Render will map)
+# Expose server port
 EXPOSE 3000
 
-# Default start
+# Start server
 CMD ["npm", "start"]
