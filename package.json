@@ -1,0 +1,21 @@
+{
+  "name": "quiz-endpoint",
+  "version": "1.0.0",
+  "description": "Quiz endpoint: validates secret, visits JS-rendered quiz pages with Playwright, solves and submits answers.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "postinstall": "playwright install --with-deps chromium"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "axios": "^1.5.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "playwright": "^1.44.0"
+  }
+}
